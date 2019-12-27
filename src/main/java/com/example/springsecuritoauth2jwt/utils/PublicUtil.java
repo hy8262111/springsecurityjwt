@@ -15,7 +15,9 @@ package com.example.springsecuritoauth2jwt.utils;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -73,5 +75,4 @@ public class PublicUtil {
         }
         return true;
     }
-
 }
