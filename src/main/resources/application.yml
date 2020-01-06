@@ -1,5 +1,5 @@
 server:
-  port: 40400
+  port: 40401
 spring:
   application:
     name: xc-service-ucenter-auth

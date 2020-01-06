@@ -17,10 +17,7 @@ import java.io.File;
 import java.io.RandomAccessFile;
 import java.security.KeyPair;
 import java.security.interfaces.RSAPrivateKey;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -49,6 +46,7 @@ public class Springsecuritoauth2jwtApplicationTests {
         String string = JSON.toJSONString(map);
         Jwt encode = JwtHelper.encode(string, new RsaSigner(aPrivate));
         String claims = encode.getClaims();
+        System.out.println(claims);
         String encoded = encode.getEncoded();
         System.out.println(encoded);
     }
@@ -89,7 +87,7 @@ public class Springsecuritoauth2jwtApplicationTests {
     }
 
     @Test
-    public void merge() throws Exception{
+    public void merge() throws Exception {
         String destFile = "C:\\Users\\houyw\\Desktop\\dest\\";
         String destFile2 = "C:\\Users\\houyw\\Desktop\\dest1\\Video_2019-12-25_152611.wmv";
         File file = new File(destFile);
@@ -101,20 +99,22 @@ public class Springsecuritoauth2jwtApplicationTests {
                 return Integer.parseInt(o1.getName()) - Integer.parseInt(o2.getName());
             }
         });
-        RandomAccessFile accessFile = new RandomAccessFile(destFile2,"rw");
+        RandomAccessFile accessFile = new RandomAccessFile(destFile2, "rw");
         for (File file1 : files) {
             RandomAccessFile accessFile1 = new RandomAccessFile(file1, "r");
             int len = -1;
-            while((len =accessFile1.read(bytes))!=-1){
-                accessFile.write(bytes,0,len);
+            while ((len = accessFile1.read(bytes)) != -1) {
+                accessFile.write(bytes, 0, len);
             }
             accessFile1.close();
         }
         accessFile.close();
     }
 
+    //调用第三方程序
     @Test
-    public void mybatis(){
-
+    public void tests() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        processBuilder.command();
     }
 }

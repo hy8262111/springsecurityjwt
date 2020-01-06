@@ -1,14 +1,15 @@
 package com.example.springsecuritoauth2jwt.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.example.springsecuritoauth2jwt.utils.Resource;
 import com.example.springsecuritoauth2jwt.utils.TreeUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.google.common.collect.Lists;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @Author: houyong
@@ -16,6 +17,7 @@ import java.util.Objects;
  * @describe
  */
 @RestController
+@RequestMapping("/controller")
 public class TestController {
 
     @RequestMapping("/test")
@@ -85,8 +87,46 @@ public class TestController {
         list.add(resource9);
         list.add(resource10);
 
-        boolean equals = Objects.equals(resource1.getPid(), 0);
-        System.out.println(equals);
-        return new TreeUtils().getChildTreeObjects(list, 0);
+
+        System.out.println(list.size());
+        List<Resource> childTreeObjects = new TreeUtils().getChildTreeObjects(list, 0);
+        return childTreeObjects;
+    }
+
+
+    @PostMapping("/test1")
+    public void test1(@RequestBody List<Resource> resourceList) {
+        for (Resource resource : resourceList) {
+            System.out.println(resource.toString());
+        }
+        List<Resource> resources = Lists.newArrayList();
+        List<Resource> treeInfo = getTreeInfo(resourceList, resources);
+        System.out.println(treeInfo.size());
+        for (Resource resource : treeInfo) {
+            System.out.println(resource.getId());
+            System.out.println(resource.getPid());
+        }
+    }
+
+    private static List<Resource> getTreeInfo(List<Resource> childTreeObjects, List<Resource> list) {
+        String string1 = JSON.toJSONString(childTreeObjects);
+        List<Resource> resources = JSON.parseArray(string1, Resource.class);
+        for (Resource entity : resources) {
+            if (entity.getChildren() != null && entity.getChildren().size() > 0) {
+                getTreeInfo(entity.getChildren(), list);
+            }
+            list.add(entity);
+        }
+        return list;
+    }
+
+    @GetMapping("/getcookie")
+    public void getcookie(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if ("test".equalsIgnoreCase(cookie.getName())) {
+                System.out.println(cookie.getValue());
+            }
+        }
     }
 }

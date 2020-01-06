@@ -13,6 +13,7 @@ package com.example.springsecuritoauth2jwt.utils;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,5 +46,6 @@ public class BaseTree<E, ID> implements Serializable {
 	/**
 	 * 子节点集合
 	 */
-	private List<E> children;
+	private List<E> children = new ArrayList<>();
+
 }
