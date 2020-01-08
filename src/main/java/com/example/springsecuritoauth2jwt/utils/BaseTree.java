@@ -25,7 +25,7 @@ import java.util.List;
  * @author paascloud.net @gmail.com
  */
 @Data
-public class BaseTree<E, ID> implements Serializable {
+public class BaseTree<T, ID> implements Serializable {
 	private static final long serialVersionUID = -5703964834600572016L;
 
 	/**
@@ -46,6 +46,6 @@ public class BaseTree<E, ID> implements Serializable {
 	/**
 	 * 子节点集合
 	 */
-	private List<E> children = new ArrayList<>();
+	private List<T> children = new ArrayList<>();
 
 }

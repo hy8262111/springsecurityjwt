@@ -1,8 +1,10 @@
 /*
+
 package com.example.springsecuritoauth2jwt.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 */
 /**
@@ -11,11 +13,14 @@ import java.util.List;
  * @describe
  *//*
 
+
 public class TreeUtils2 {
-    */
+
+*/
 /**
      * 递归创建树形结构
      *//*
+
 
     private static List<ThreeNode> getTree(List<ThreeNode> nodeList, Integer parentId) {
         List<ThreeNode> threeNodeList = new ArrayList<>();
@@ -34,10 +39,12 @@ public class TreeUtils2 {
         return threeNodeList;
     }
 
-    */
+
+*/
 /**
      * 获取指定子节点
      *//*
+
 
     private static List<ThreeNode> getChildTree(Integer id, List<ThreeNode> nodeList) {
         List<ThreeNode> resultList = new ArrayList<>();
@@ -52,10 +59,12 @@ public class TreeUtils2 {
         return resultList;
     }
 
-    */
+
+*/
 /**
      * 遍历树形结构
      *//*
+
 
     private static transient List<Integer> treeIdList = new ArrayList<>();
 
@@ -69,10 +78,11 @@ public class TreeUtils2 {
         return treeIdList;
     }
 
-    */
+*/
 /**
      * 判断节是否是叶子节点
      *//*
+
 
     private static boolean hasChildNode(Integer id, List<ThreeNode> nodeList) {
         for (ThreeNode entity : nodeList) {
@@ -84,4 +94,5 @@ public class TreeUtils2 {
     }
 
 }
+
 */

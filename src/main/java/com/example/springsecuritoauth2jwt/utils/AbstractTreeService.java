@@ -28,6 +28,10 @@ import java.util.Objects;
 public abstract class AbstractTreeService<T extends BaseTree<T, ID>, ID extends Serializable> implements ITree<T, ID> {
 
     /**
+     * ===================================================第一种递归树方法开始======================================================================
+     */
+
+    /**
      * Gets child tree objects.
      *
      * @param list     the list
@@ -109,4 +113,90 @@ public abstract class AbstractTreeService<T extends BaseTree<T, ID>, ID extends 
     public boolean hasChild(List<T> list, T t) {
         return !getChildList(list, t).isEmpty();
     }
+    /**
+     * ===================================================第一种递归树方法结束======================================================================
+     */
+
+
+
+
+
+
+
+
+
+
+    /**
+     * ===================================================第二种递归树方法开始======================================================================
+     */
+    /**
+     * 递归创建树形结构
+     */
+
+    private List<T> getTree(List<T> nodeList, ID parentId) {
+        List<T> threeNodeList = new ArrayList<>();
+        for (T entity : nodeList) {
+            ID nodeId = entity.getId();
+            ID pid = entity.getPid();
+            if (parentId == pid) {
+                List<T> childList = getTree(nodeList, nodeId);
+                if (childList != null && childList.size() > 0) {
+                    entity.setChildren(childList);
+                }
+                threeNodeList.add(entity);
+            }
+        }
+        return threeNodeList;
+    }
+
+
+    /**
+     * 获取指定子节点
+     */
+
+    private  List<T> getChildTree(ID id, List<T> nodeList) {
+        List<T> resultList = new ArrayList<>();
+        for (T entity : nodeList) {
+            if (entity.getPid() == id) {
+                List<T> childList = getChildTree(entity.getId(), nodeList);
+                entity.setChildren(childList);
+                resultList.add(entity);
+            }
+        }
+        return resultList;
+    }
+
+
+    /**
+     * 遍历树形结构
+     */
+
+    private  transient List<ID> treeIdList = new ArrayList<>();
+
+    private  List<ID> getTreeInfo(List<T> treeList) {
+        for (T entity : treeList) {
+            if (entity.getChildren() != null && entity.getChildren().size() > 0) {
+                getTreeInfo(entity.getChildren());
+            }
+            treeIdList.add(entity.getId());
+        }
+        return treeIdList;
+    }
+
+    /**
+     * 判断节是否是叶子节点
+     */
+
+    private  boolean hasChildNode(ID id, List<T> nodeList) {
+        for (T entity : nodeList) {
+            if (entity.getPid() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+/**
+ * ===================================================第二种递归树方法开始======================================================================
+ */
+
 }
