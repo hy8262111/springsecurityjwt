@@ -31,7 +31,7 @@ public class BaseTree<T, ID> implements Serializable {
 	/**
 	 * ID
 	 */
-	private ID id;
+	private Integer id;
 
 	/**
 	 * 父ID

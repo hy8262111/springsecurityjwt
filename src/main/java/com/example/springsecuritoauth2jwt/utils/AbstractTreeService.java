@@ -133,7 +133,7 @@ public abstract class AbstractTreeService<T extends BaseTree<T, ID>, ID extends 
      * 递归创建树形结构
      */
 
-    private List<T> getTree(List<T> nodeList, ID parentId) {
+    /*private List<T> getTree(List<T> nodeList, ID parentId) {
         List<T> threeNodeList = new ArrayList<>();
         for (T entity : nodeList) {
             ID nodeId = entity.getId();
@@ -147,14 +147,14 @@ public abstract class AbstractTreeService<T extends BaseTree<T, ID>, ID extends 
             }
         }
         return threeNodeList;
-    }
+    }*/
 
 
     /**
      * 获取指定子节点
      */
 
-    private  List<T> getChildTree(ID id, List<T> nodeList) {
+    /*private  List<T> getChildTree(ID id, List<T> nodeList) {
         List<T> resultList = new ArrayList<>();
         for (T entity : nodeList) {
             if (entity.getPid() == id) {
@@ -164,7 +164,7 @@ public abstract class AbstractTreeService<T extends BaseTree<T, ID>, ID extends 
             }
         }
         return resultList;
-    }
+    }*/
 
 
     /**
@@ -173,7 +173,7 @@ public abstract class AbstractTreeService<T extends BaseTree<T, ID>, ID extends 
 
     private  transient List<ID> treeIdList = new ArrayList<>();
 
-    private  List<ID> getTreeInfo(List<T> treeList) {
+    /*private  List<ID> getTreeInfo(List<T> treeList) {
         for (T entity : treeList) {
             if (entity.getChildren() != null && entity.getChildren().size() > 0) {
                 getTreeInfo(entity.getChildren());
@@ -181,7 +181,7 @@ public abstract class AbstractTreeService<T extends BaseTree<T, ID>, ID extends 
             treeIdList.add(entity.getId());
         }
         return treeIdList;
-    }
+    }*/
 
     /**
      * 判断节是否是叶子节点

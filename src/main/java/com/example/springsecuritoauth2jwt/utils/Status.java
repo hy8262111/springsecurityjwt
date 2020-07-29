@@ -2,6 +2,7 @@ package com.example.springsecuritoauth2jwt.utils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.security.core.userdetails.User;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

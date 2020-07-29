@@ -2,6 +2,7 @@ package com.example.springsecuritoauth2jwt;
 
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
+import org.junit.rules.Timeout;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,10 +19,16 @@ import java.io.RandomAccessFile;
 import java.security.KeyPair;
 import java.security.interfaces.RSAPrivateKey;
 import java.util.*;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class Springsecuritoauth2jwtApplicationTests {
+    @Autowired
+    ThreadPoolExecutor threadPoolExecutor;
+
 
     @Test
     public void contextLoads() {
@@ -116,5 +123,41 @@ public class Springsecuritoauth2jwtApplicationTests {
     public void tests() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         processBuilder.command();
+    }
+
+
+    @Test
+    public void test23() {
+        /*Semaphore semaphore = new Semaphore(3);
+        for (int i=0;i<10;i++){
+            final int index = i;
+            threadPoolExecutor.execute(()->{
+                try {
+                    semaphore.acquire();
+                    System.out.println(index);
+                    TimeUnit.SECONDS.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    semaphore.release();
+                }
+            });
+        }*/
+
+        Semaphore semaphore1 = new Semaphore(3);
+        for (int i = 0; i < 10; i++) {
+            final int index = i;
+            new Thread(() -> {
+                try {
+                    semaphore1.acquire();
+                    System.out.println(index);
+                    TimeUnit.SECONDS.sleep(3);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    semaphore1.release();
+                }
+            }).start();
+        }
     }
 }
