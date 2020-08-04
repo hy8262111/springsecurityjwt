@@ -1,15 +1,7 @@
 package com.example.springsecuritoauth2jwt.controller;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-
-import java.sql.SQLOutput;
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.AtomicStampedReference;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @Author: houyong
@@ -19,12 +11,12 @@ import java.util.stream.Stream;
 public class ArrayListTest {
     public static synchronized void main(String[] args) {
         List<User> list = new ArrayList();//CopyOnWriteArrayList();//new Vector();
-        list.add(new User(21, "A"));
+        /*list.add(new User(21, "A"));
         list.add(new User(22, "B"));
         list.add(new User(23, "C"));
         list.add(new User(24, "D"));
-        list.add(new User(25, "E"));
         list.add(new User(26, "F"));
+        list.add(new User(25, "E"));*/
         //list.stream().forEach(System.out::println);
 
 
@@ -43,9 +35,9 @@ public class ArrayListTest {
 
 
         Set<User> set = new HashSet<>();
+        /*set.add(new User(1, "aa"));
         set.add(new User(1, "aa"));
-        set.add(new User(1, "aa"));
-        set.add(new User(2, "bb"));
+        set.add(new User(2, "bb"));*/
 
         set.stream().forEach(u1 -> System.out.println(u1));
     }
