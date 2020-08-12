@@ -2,7 +2,6 @@ package com.example.springsecuritoauth2jwt.controller;
 
 import com.google.common.collect.Lists;
 
-import javax.xml.ws.soap.Addressing;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -21,6 +20,5 @@ public class Test {
 
         File file = new File("C:\\Users\\houyw\\Desktop\\1.txt");
         OutputStream outputStream = new FileOutputStream(file);
-        outputStream.
     }
 }

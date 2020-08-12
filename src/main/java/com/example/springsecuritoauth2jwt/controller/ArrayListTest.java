@@ -1,5 +1,7 @@
 package com.example.springsecuritoauth2jwt.controller;
 
+import com.alibaba.fastjson.JSON;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -38,7 +40,8 @@ public class ArrayListTest {
         /*set.add(new User(1, "aa"));
         set.add(new User(1, "aa"));
         set.add(new User(2, "bb"));*/
-
+        User aa = new User("aa",1,1);
+        System.out.println(JSON.toJSONString(aa));
         set.stream().forEach(u1 -> System.out.println(u1));
     }
 }

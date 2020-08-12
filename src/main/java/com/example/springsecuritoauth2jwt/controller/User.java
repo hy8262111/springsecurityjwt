@@ -1,14 +1,11 @@
 package com.example.springsecuritoauth2jwt.controller;
 
-import com.example.springsecuritoauth2jwt.utils.TreeUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import lombok.experimental.Accessors;
 
-import java.io.*;
-import java.util.Objects;
+import java.io.Serializable;
 
 /**
  * @Author: houyong

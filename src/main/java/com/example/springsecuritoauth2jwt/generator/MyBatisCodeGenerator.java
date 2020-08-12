@@ -23,6 +23,7 @@ public class MyBatisCodeGenerator {
     /**
      * <p>
      * 读取控制台内容
+     * 参考链接https://blog.csdn.net/qq_40065776/article/details/107546643?utm_medium=distribute.pc_category.none-task-blog-hot-10.nonecase&depth_1-utm_source=distribute.pc_category.none-task-blog-hot-10.nonecase&request_id=
      * </p>
      */
     public static String scanner(String tip) {

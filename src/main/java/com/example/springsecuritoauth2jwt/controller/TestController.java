@@ -6,14 +6,13 @@ import com.example.springsecuritoauth2jwt.utils.Resource;
 import com.example.springsecuritoauth2jwt.utils.TreeUtils;
 import com.google.common.collect.Lists;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import org.apache.ibatis.annotations.Case;
 import org.apache.poi.poifs.filesystem.FileMagic;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.event.SwingPropertyChangeSupport;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,10 +26,15 @@ import java.util.concurrent.*;
  */
 @RestController
 @RequestMapping("/controller")
+@RefreshScope
 public class TestController {
+
+    @Value("${xuecheng.key}")
+    private String key;
 
     @RequestMapping("/test")
     public List<Resource> test() {
+        System.out.println(key);
         List<Resource> list = new ArrayList<>();
         Resource resource1 = new Resource();
         resource1.setId(1);
