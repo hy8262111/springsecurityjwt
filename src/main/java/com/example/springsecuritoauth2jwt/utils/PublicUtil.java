@@ -15,9 +15,8 @@ package com.example.springsecuritoauth2jwt.utils;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -74,5 +73,23 @@ public class PublicUtil {
             return ((Map) pObj).size() != 0;
         }
         return true;
+    }
+
+    public static void main(String[] args) {
+        /*BigDecimal bigDecimal = new BigDecimal(1);
+        BigDecimal bigDecimal1 = new BigDecimal(1);
+        System.out.println(bigDecimal.equals(bigDecimal1));
+        System.out.println(bigDecimal.compareTo(bigDecimal)==0);*/
+
+
+        /*BigDecimal bigDecimal2 = new BigDecimal(1);
+        BigDecimal bigDecimal3 = new BigDecimal(1.0);
+        System.out.println(bigDecimal2.equals(bigDecimal3));
+        System.out.println(bigDecimal2.compareTo(bigDecimal3)==0);*/
+
+        BigDecimal bigDecimal4 = new BigDecimal("1");
+        BigDecimal bigDecimal5 = new BigDecimal("1.0");
+        System.out.println(bigDecimal4.equals(bigDecimal5));
+        System.out.println(bigDecimal4.compareTo(bigDecimal5)==0);
     }
 }

@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.*;
 
 /**
@@ -29,11 +29,14 @@ import java.util.concurrent.*;
 @RefreshScope
 public class TestController {
 
+    //@Value("#{T(java.lang.Integer).parseInt('${xuecheng.key:7}')}")
+
     @Value("${xuecheng.key}")
     private String key;
 
     @RequestMapping("/test")
     public List<Resource> test() {
+        System.out.println();
         System.out.println(key);
         List<Resource> list = new ArrayList<>();
         Resource resource1 = new Resource();
@@ -231,82 +234,11 @@ public class TestController {
 
 
     public static void main(String[] args) {
-        //需求：查找数组arr中第k个奇数如果不存在返回0
-        /*PriorityQueue<Integer> q = new PriorityQueue<Integer>();
-        q.add(10);
-        q.add(2);
-        q.add(13);
-        q.add(0);
-        Iterator<Integer> iterator = q.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }*/
-        //扑克牌案例    4个人平均分配8个东西       0%4==0  1%4==1  2%4==2  3%4==3  4%4=0
-        String[] nums = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
-        String[] color = {"♦", "♣", "♠", "♥"};
-        List<String> list = Lists.newArrayList();
-        list.add("大王");
-        list.add("小王");
-        for (String c : color) {
-            for (String n : nums) {
-                list.add(c + n);
-            }
-        }
-        Collections.shuffle(list);
-        List<String> a = Lists.newArrayList();
-        List<String> b = Lists.newArrayList();
-        List<String> c = Lists.newArrayList();
-        List<String> d = Lists.newArrayList();
-        for (int i = 0; i < list.size(); i++) {
-            String s = list.get(i);
-            int mo = i % 4;
-            test(mo,s,a,b,c,d);
-        }
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(c);
-        System.out.println(d);
-
-    }
-
-
-    private static void test(int mo, String s, List<String> a, List<String> b, List<String> c, List<String> d) {
-        switch (mo) {
-            case 0:
-                a.add(s);
-                break;
-            case 1:
-                b.add(s);
-                break;
-            case 2:
-                c.add(s);
-                break;
-            default:
-                d.add(s);
-        }
-    }
-
-    /**
-     * @param arr
-     * @param k
-     * @return
-     */
-    public int findKth(int[] arr, int k) {
-        //程序的时间复杂度为O(n)。
-        PriorityQueue<Integer> q = new PriorityQueue<Integer>(k);
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] % 2 == 1) {   //奇数
-                q.add(arr[i]);
-            }
-            if (q.size() > k) {   //如果队列容量超过k了  就弹出最小元素
-                q.poll();
-            }
-        }
-        //判断队列长度是否为空或者根本不存在第k大的奇数
-        if (q.size() != k || q.size() == 0) {
-            return 0;
-        } else {
-            return q.peek();
+        String fileInPath = "";
+        String fileOutPath = "";
+        try (InputStream inputStream = new FileInputStream(fileInPath); OutputStream outputStream = new FileOutputStream(fileOutPath)) {
+        } catch (Exception e) {
+            throw new RuntimeException();
         }
     }
 

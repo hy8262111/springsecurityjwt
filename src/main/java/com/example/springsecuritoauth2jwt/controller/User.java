@@ -19,7 +19,7 @@ import java.io.Serializable;
 @Data
 public class User implements Serializable {
     private static final long serialVersionUID = -2278893558530939879L;
-    private String name;
     private Integer age;
+    private String name;
     private Integer store;
 }

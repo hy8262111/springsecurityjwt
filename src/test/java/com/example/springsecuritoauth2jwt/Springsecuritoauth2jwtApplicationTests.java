@@ -2,7 +2,6 @@ package com.example.springsecuritoauth2jwt;
 
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
-import org.junit.rules.Timeout;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +17,7 @@ import java.io.File;
 import java.io.RandomAccessFile;
 import java.security.KeyPair;
 import java.security.interfaces.RSAPrivateKey;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -28,6 +28,19 @@ import java.util.concurrent.TimeUnit;
 public class Springsecuritoauth2jwtApplicationTests {
     @Autowired
     ThreadPoolExecutor threadPoolExecutor;
+
+    @Autowired
+    private UserInfoMapper userInfoMapper;
+
+    @Test
+    public void testMP(){
+        UserInfo userInfo = new UserInfo();
+        userInfo.setPassword("123");
+        userInfo.setCreateTime(LocalDateTime.now());
+        userInfo.setUserName("houyong");
+        int insert = userInfoMapper.insert(userInfo);
+        System.out.println(insert);
+    }
 
 
     @Test
